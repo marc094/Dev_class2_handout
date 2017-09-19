@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!--comment-->
 <config>
-	<name>Default Name</name>
+  <app>
+    <name>XML Test</name>
+  </app>
+  <audio>
+    <master_volume value="100"/>
+  </audio>
+  <input>
+  </input>
+  <render>
+    <vsync value="false"/>
+  </render>
+  <textures>
+    <texture_res>1024x1024</texture_res>
+  </textures>
+  <window>
+    <window_res>
+      <height value="1024"/>
+      <width value="1024"/>
+    </window_res>
+  </window>
 </config>
