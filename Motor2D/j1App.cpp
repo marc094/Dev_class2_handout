@@ -69,7 +69,6 @@ bool j1App::Awake()
 		ret = false;
 		LOG("Error reading the file:: %s", result.description());
 	}
-
 	node = document.first_child();
 
 	p2List_item<j1Module*>* item;
@@ -81,7 +80,7 @@ bool j1App::Awake()
 		// If the section with the module name exist in config.xml, fill the pointer with the address of a valid xml_node
 		// that can be used to read all variables from that section. Send nullptr if the section does not exist in config.xml
 
-		ret = item->data->Awake();
+		ret = item->data->Awake(GetNode((item->data->name.GetString())));
 		item = item->next;
 	}
 
@@ -232,7 +231,30 @@ const char* j1App::GetArgv(int index) const
 		return NULL;
 }
 
-pugi::xml_node j1App::GetConfigNode(pugi::char_t* name) {
-	pugi::xml_node aux_node = node.child(name);
+pugi::xml_node* j1App::GetConfigNode(const pugi::char_t* name)
+{
+	pugi::xml_node *aux_node = &node.child(name);
 	return aux_node;
+}
+
+pugi::xml_node* j1App::GetNode(const pugi::char_t* name)
+{
+	pugi::xml_node current = node.first_child();
+	while (current.root() != nullptr && strcmp(current.name(), node.name()) != 0) {
+		if (strcmp(current.name(), name) == 0)
+			return new pugi::xml_node(current);
+
+		if (current.first_child() != nullptr)
+			current = current.first_child();
+		else if (current.next_sibling() != nullptr)
+				current = current.next_sibling();
+		else {
+			while (!current.next_sibling() && strcmp(current.name(), node.name()) != 0)
+				current = current.parent();
+
+			if (strcmp(current.name(), node.name()) != 0)
+				current = current.next_sibling();
+		}
+	}
+	return nullptr;
 }

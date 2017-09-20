@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!--comment-->
 <config>
-  <app>
-    <name>XML Test</name>
-  </app>
   <audio>
     <master_volume value="100"/>
   </audio>
   <input>
   </input>
   <render>
-    <vsync value="false"/>
+    <vsync value="0"/>
   </render>
   <textures>
-    <texture_res>1024x1024</texture_res>
+    <texture_res value="1024"/>
   </textures>
   <window>
-    <window_res>
-      <height value="1024"/>
-      <width value="1024"/>
-    </window_res>
+    <width value="1024"/>
+    <height value="768"/>
+    <scale value="1"/>
+    <fullscreen value="0"/>
+    <borderless value="0"/>
+    <resizable value="1"/>
+    <fullscreen_window value="0"/>
+    <title value="XML Test"/>
   </window>
 </config>
