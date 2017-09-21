@@ -231,13 +231,13 @@ const char* j1App::GetArgv(int index) const
 		return NULL;
 }
 
-pugi::xml_node* j1App::GetConfigNode(const pugi::char_t* name)
+pugi::xml_node* j1App::GetConfigNode(const pugi::char_t* name) const
 {
 	pugi::xml_node *aux_node = &node.child(name);
 	return aux_node;
 }
 
-pugi::xml_node* j1App::GetNode(const pugi::char_t* name)
+pugi::xml_node* j1App::GetNode(const pugi::char_t* name) const
 {
 	pugi::xml_node current = node.first_child();
 	while (current.root() != nullptr && strcmp(current.name(), node.name()) != 0) {

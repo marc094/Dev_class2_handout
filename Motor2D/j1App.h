@@ -43,9 +43,9 @@ public:
 	const char* GetArgv(int index) const;
 
 	// Getting an xml node by its name
-	pugi::xml_node* GetNode(const pugi::char_t* name);
+	pugi::xml_node* GetNode(const pugi::char_t* name) const;
 
-	pugi::xml_node* GetConfigNode(const pugi::char_t* name);
+	pugi::xml_node* GetConfigNode(const pugi::char_t* name) const;
 
 private:
 
